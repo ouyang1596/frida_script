@@ -60,14 +60,11 @@ function shouldPrint(intent, who, prefix) {
       return false;
     }
   }
-  if (!prefix) {
-    return true;
-  }
   if (who === null) {
     return false;
   }
   try {
-    return String(who.getPackageName()) === prefix;
+    return inPackage(String(who.getPackageName()), prefix);
   } catch (e) {
     return false;
   }

@@ -1,5 +1,5 @@
 // 目标进程用 frida -f / -n 指定。这里只填脚本内部要过滤、要挂钩的类。
-// 一次只加载 scripts 目录里的一个脚本，见 README。
+// 多支脚本可以一起 -l。日志会混在一起，见 README。
 globalThis.CONFIG = {
   // 枚举类用的包名前缀，不要带末尾点
   packagePrefix: "com.vpb.popo",

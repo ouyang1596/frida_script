@@ -2,8 +2,8 @@
 // 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/enum_classes.js
 // 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/enum_classes.js
 
-const { cfg, inPackage, pickLoadClass } = globalThis;
-if (typeof cfg !== "function" || typeof inPackage !== "function") {
+const { cfg, inPackage, watchLoadClass } = globalThis;
+if (typeof cfg !== "function" || typeof inPackage !== "function" || typeof watchLoadClass !== "function") {
   throw new Error("缺少依赖。加载顺序：-l config.js -l lib/common.js -l scripts/enum_classes.js");
 }
 
@@ -35,19 +35,11 @@ function dumpMethods(prefix) {
 }
 
 function watchFutureLoads(prefix) {
-  const ClassLoader = Java.use("java.lang.ClassLoader");
-  const overload = pickLoadClass(ClassLoader);
-  overload.implementation = function () {
-    const result = overload.apply(this, arguments);
-    try {
-      const name = arguments[0] === null || arguments[0] === undefined ? "" : String(arguments[0]);
-      if (inPackage(name, prefix)) {
-        console.log("[load] " + name);
-      }
-    } catch (e) {
+  watchLoadClass(function (name) {
+    if (inPackage(name, prefix)) {
+      console.log("[load] " + name);
     }
-    return result;
-  };
+  });
   console.log("[enum] 已监听后续 ClassLoader.loadClass");
 }
 
