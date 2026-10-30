@@ -1,9 +1,9 @@
-// 挂钩 Instrumentation.execStartActivity，打印目标组件（或 action、data）和 extras。
+// 挂钩 Instrumentation.execStartActivity，打印目标组件（或 action、data）、extras 和 Java 调用栈。
 // 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/start_activity.js
 // 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/start_activity.js
 
-const { cfg, inPackage, describe } = globalThis;
-if (typeof cfg !== "function" || typeof inPackage !== "function" || typeof describe !== "function") {
+const { cfg, inPackage, describe, formatJavaStack } = globalThis;
+if (typeof cfg !== "function" || typeof inPackage !== "function" || typeof describe !== "function" || typeof formatJavaStack !== "function") {
   throw new Error("缺少依赖。加载顺序：-l config.js -l lib/common.js -l scripts/start_activity.js");
 }
 
@@ -113,6 +113,7 @@ Java.perform(function () {
         const who = findByClass(args, "android.content.Context");
         if (intent !== null && shouldPrint(intent, who, prefix)) {
           dumpIntent(intent);
+          console.log(formatJavaStack());
         }
       } catch (e) {
         console.log("[start] " + e);
