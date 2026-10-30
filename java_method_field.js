@@ -2,7 +2,7 @@
  * 挂钩指定 Java/Kotlin 方法，读取当前对象 this 上的实例字段并打印，然后继续执行原方法。
  *
  * 用法:
- *   frida -U -f <包名> -l java_method_field.js
+ *   frida -U -f com.vpb.popo -l java_method_field.js
  *   frida -U Tada -l java_method_field.js
  *
  * 修改下方 CONFIG 后重新加载。内部类名使用 $，例如 com.example.Foo$Bar。

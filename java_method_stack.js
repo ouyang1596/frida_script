@@ -2,7 +2,7 @@
  * 打印指定 Java/Kotlin 方法被调用时的 Java 调用堆栈，并继续执行原方法。
  *
  * 用法:
- *   frida -U -f Tada -l java_method_stack.js
+ *   frida -U -f com.vpb.popo -l java_method_stack.js
  *   frida -U Tada -l java_method_stack.js
  *
  * 修改下方 CONFIG 后重新加载。内部类名使用 $，例如 com.example.Foo$Bar。
