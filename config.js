@@ -19,4 +19,8 @@ globalThis.CONFIG = {
   // enum_classes.js
   dumpMethods: false,
   watchFutureLoads: true,
+
+  // view_click.js。空字符串表示不过滤
+  idContains: "",
+  classContains: "",
 };
