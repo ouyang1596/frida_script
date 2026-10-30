@@ -12,12 +12,22 @@ Android hook 模板，按本机 Frida 17 的 API 编写。改 `config.js` 里的
 - `className` / `methodName`：要挂钩的类和方法。构造方法写 `$init` 或 `<init>`
 - `overload`：`null` 表示全部重载。要指定时写成 `["android.os.Bundle"]` 这种类型名
 
-PowerShell 里把 `<包名>` 换成应用包名。`-f` 是冷启动，进程已经在跑时把 `-f` 换成 `-n`。
+PowerShell 里把 `<包名>` 换成应用包名。`-f` 冷启动应用，`-n` 附加到已经在跑的进程。
+
+应用未启动：
 
 ```powershell
 frida -U -f <包名> -l config.js -l lib/common.js -l scripts/enum_classes.js
 frida -U -f <包名> -l config.js -l lib/common.js -l scripts/java_hook.js
 frida -U -f <包名> -l config.js -l lib/common.js -l scripts/print_stack.js
+```
+
+应用已经启动：
+
+```powershell
+frida -U -n <进程名> -l config.js -l lib/common.js -l scripts/enum_classes.js
+frida -U -n <进程名> -l config.js -l lib/common.js -l scripts/java_hook.js
+frida -U -n <进程名> -l config.js -l lib/common.js -l scripts/print_stack.js
 ```
 
 ## 脚本

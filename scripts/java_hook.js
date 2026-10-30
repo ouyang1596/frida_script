@@ -1,5 +1,6 @@
 // 挂钩 config.js 里的 className.methodName，打印参数和返回值。
-// frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/java_hook.js
+// 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/java_hook.js
+// 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/java_hook.js
 
 const { cfg, hookMethod } = globalThis;
 if (typeof cfg !== "function" || typeof hookMethod !== "function") {
