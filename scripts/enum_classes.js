@@ -1,6 +1,6 @@
 // 列出 packagePrefix 下已经加载的类。watchFutureLoads 为 true 时继续打印后续 loadClass。
-// 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/enum_classes.js
-// 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/enum_classes.js
+// 冷启动：frida -D emulator-5554 -f com.vpb.popo -l config.js -l lib/common.js -l scripts/enum_classes.js
+// 已启动：frida -D emulator-5554 Tada -l config.js -l lib/common.js -l scripts/enum_classes.js
 
 const { cfg, inPackage, watchLoadClass } = globalThis;
 if (typeof cfg !== "function" || typeof inPackage !== "function" || typeof watchLoadClass !== "function") {

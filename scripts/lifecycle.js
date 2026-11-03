@@ -1,8 +1,8 @@
 // 打印应用自己的 Activity onCreate / onResume / onPause，以及 Fragment onResume。
 // AndroidX 和框架 Fragment 都会挂。AndroidX 还没加载时等到 loadClass，不拿框架 Fragment 顶替。
 // 子类重写这些方法且不调用 super 时，这次回调不会出现。
-// 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/lifecycle.js
-// 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/lifecycle.js
+// 冷启动：frida -D emulator-5554 -f com.vpb.popo -l config.js -l lib/common.js -l scripts/lifecycle.js
+// 已启动：frida -D emulator-5554 Tada -l config.js -l lib/common.js -l scripts/lifecycle.js
 
 const { cfg, inPackage, useClass, hookWhenLoaded } = globalThis;
 if (typeof cfg !== "function" || typeof inPackage !== "function" || typeof useClass !== "function" || typeof hookWhenLoaded !== "function") {

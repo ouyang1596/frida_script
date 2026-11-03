@@ -1,7 +1,7 @@
 // 挂钩 View.performClick 和 AdapterView.performItemClick，打印 view 类名、资源 id、文本和所在 Activity。
 // 子类重写这些方法且不调用 super 时，这次点击不会出现。
-// 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/view_click.js
-// 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/view_click.js
+// 冷启动：frida -D emulator-5554 -f com.vpb.popo -l config.js -l lib/common.js -l scripts/view_click.js
+// 已启动：frida -D emulator-5554 Tada -l config.js -l lib/common.js -l scripts/view_click.js
 
 const { cfg, inPackage } = globalThis;
 if (typeof cfg !== "function" || typeof inPackage !== "function") {

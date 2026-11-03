@@ -1,6 +1,6 @@
 // 调用 config.js 里的方法时打印 Java 栈。
-// 冷启动：frida -U -f com.vpb.popo -l config.js -l lib/common.js -l scripts/print_stack.js
-// 已启动：frida -U Tada -l config.js -l lib/common.js -l scripts/print_stack.js
+// 冷启动：frida -D emulator-5554 -f com.vpb.popo -l config.js -l lib/common.js -l scripts/print_stack.js
+// 已启动：frida -D emulator-5554 Tada -l config.js -l lib/common.js -l scripts/print_stack.js
 
 const { cfg, hookMethod } = globalThis;
 if (typeof cfg !== "function" || typeof hookMethod !== "function") {

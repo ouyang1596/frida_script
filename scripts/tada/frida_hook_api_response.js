@@ -5,8 +5,8 @@
  * 适用未混淆的 debug 包（applicationId: com.vpb.popo）。
  *
  * 用法：
- *   frida -U -f com.vpb.popo -l script/frida_hook_api_response.js
- *   frida -U com.vpb.popo -l script/frida_hook_api_response.js
+ *   frida -D emulator-5554 -f com.vpb.popo -l script/tada/frida_hook_api_response.js
+ *   frida -D emulator-5554 Tada -l script/tada/frida_hook_api_response.js
  *
  * 改返回值：编辑下面的 RULES。
  * body 必须是服务端原始包：{"code":1,"msg":"...","result":...}

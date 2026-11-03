@@ -10,7 +10,7 @@
  *
  * 闪屏 BaseSplashFragment.tryJumpToNextActivity 和 MainActivity.onResume
  * 读的是 isEmulator()，只让 checkAndShowDialog 空返回还不够，标志位也要保持 false。
- * 冷启动：frida -U -f com.vpb.popo -l scripts/tada/frida-skip-emulator-check.js
+ * 冷启动：frida -D emulator-5554 -f com.vpb.popo -l scripts/tada/frida-skip-emulator-check.js
  */
 
 function hookOverloads(clazz, methodName, impl) {
