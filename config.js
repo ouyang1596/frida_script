@@ -8,11 +8,13 @@ globalThis.CONFIG = {
 
   // java_hook.js / print_stack.js 要挂钩的类和方法。
   // 构造方法写 $init 或 <init>，静态初始化写 $clinit 或 <clinit>。
-  className: "com.vpb.popo.aaspring.modulars.chat.activity.ChatActivity",
-  methodName: "sendImageFile",
+  className: "com.vpb.popo.aaspring.modulars.live.adapter.AutoLiveChatAdapter",
+  methodName: "findRankLabel",
   // null 表示全部重载。要指定时，类型名与 Frida argumentTypes.className 一致，
   // 例如 ["android.os.Bundle"]、["java.lang.String", "int"]、["[B"]。
   overload: null,
+  // null：实例和静态都挂。true 只挂静态，false 只挂实例。
+  staticMethod: null,
 
   // java_hook.js：是否打印参数、返回值。print_stack.js 会强制打开这两项。
   printArgs: true,

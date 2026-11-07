@@ -9,7 +9,8 @@ Android hook 模板，按本机 Frida 17 的 API 编写。改 `config.js` 里的
 先改 `config.js`：
 
 - `packagePrefix`：枚举类，以及点击、跳转、生命周期的过滤前缀
-- `className` / `methodName`：要挂钩的类和方法。构造方法写 `$init` 或 `<init>`
+- `className` / `methodName`：要挂钩的类和方法。构造方法写 `$init` 或 `<init>`。静态方法直接写方法名
+- `staticMethod`：`null` 时实例和静态都挂，`true` 只挂静态，`false` 只挂实例
 - `overload`：`null` 表示全部重载。要指定时写成 `["android.os.Bundle"]` 这种类型名
 - `idContains` / `classContains`：点击脚本的资源 id、view 类名过滤。空字符串表示不过滤
 

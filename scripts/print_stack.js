@@ -14,6 +14,7 @@ Java.perform(function () {
       className: c.className,
       methodName: c.methodName,
       overload: c.overload,
+      staticMethod: c.staticMethod,
       printArgs: true,
       printReturn: true,
       printJavaStack: true,
